@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Stage 1') {
+            steps {
+                echo 'Hello World'
+                sh 'touch test1.txt'
+            }
+        }
+        stage('Stage 2') {
+            steps {
+                sh 'touch test2.txt'
+            }
+        }
+        stage('Stage 3') {
+            steps {
+                sh 'touch test3.test'
+            }
+        }
+    }
+}
