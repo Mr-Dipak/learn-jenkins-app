@@ -16,11 +16,6 @@ pipeline {
                 }
             }  
             steps {
-                script {
-                    docker.image('alpine').inside('-it') {
-                        sh 'sh'
-                    }
-                }
                 sh '''touch test2.txt
                 cat /etc/*release*
                 touch test2.test
