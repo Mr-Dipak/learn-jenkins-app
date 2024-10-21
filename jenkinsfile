@@ -9,6 +9,11 @@ pipeline {
             }
         }
         stage('Stage 2') {
+            agent {
+                docker {
+                    image 'alpine'
+                }
+            }  
             steps {
                 sh 'touch test2.txt'
             }
