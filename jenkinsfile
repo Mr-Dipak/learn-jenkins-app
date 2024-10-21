@@ -2,27 +2,20 @@ pipeline {
     agent any
 
     stages {
-        stage('Stage 1') {
-            steps {
-                echo 'Hello World'
-                sh 'touch test1.txt'
+        stage('Build') {
+            agent{
+                docker 
+                image 'node:18-alpine'
+                reuseNode true
             }
-        }
-        stage('Stage 2') {
-            agent {
-                docker {
-                    image 'alpine'
-                }
-            }  
             steps {
-                sh '''touch test2.txt
-                cat /etc/*release* > release.txt
-                '''
-            }
-        }
-        stage('Stage 3') {
-            steps {
-                sh 'touch test3.test'
+                sh '''
+                    ls -la
+                    node --version
+                    npm --version
+                    npm ci
+                    npm run build
+                    '''
             }
         }
     }
