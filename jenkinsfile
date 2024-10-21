@@ -15,7 +15,9 @@ pipeline {
                 }
             }  
             steps {
-                sh 'touch test2.txt'
+                sh '''touch test2.txt
+                cat /etc/*release*
+                '''
             }
         }
         stage('Stage 3') {
