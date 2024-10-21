@@ -16,7 +16,7 @@ pipeline {
             }  
             steps {
                 sh '''touch test2.txt
-                /etc/*release* > release.txt
+                cat /etc/*release* > release.txt
                 '''
             }
         }
